@@ -9,23 +9,35 @@ html {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: "Montserrat", "Helvetica Neue";
 }
-
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .content-card {
   width: 87%;
   max-width: 360px;
   min-width: 240px;
-  height: 85%;
+  height: 90%;
   max-height: 600px;
   background-color: #fff;
   border-radius: 5px;
   position: relative;
   -webkit-box-shadow: 0px 40px 40px -20px #3c7b61;
   box-shadow: 0px 40px 40px -20px #3c7b61;
+  display: none;
+}
+.content-card.active {
+  display: block;
+  max-height: 650px;
+  max-width: 360px;
+  margin: 0 -115px;
+  z-index: 1;
 }
 
 .close-button-wrapper {
@@ -39,11 +51,12 @@ main {
   padding: 0 35px;
 }
 
-main h2 {
+main > h2 {
   font-weight: 500;
   font-size: 22px;
   color: #46332f;
   margin-top: 30px;
+  height: 60px;
 }
 
 main p {
@@ -54,19 +67,25 @@ main p {
   color: #828282;
   margin-bottom: 35px;
 }
-
+main > img {
+  width: 50%;
+  position: relative;
+}
 .order-summary {
   background-color: #f0fff5;
   height: 66px;
   width: 100%;
   border-radius: 5px;
-  margin-bottom: 30px;
 
   display: flex;
   align-items: center;
 }
 .order-summary img {
   height: 100%;
+}
+.order-summary.hidden {
+  visibility: hidden;
+  margin-bottom: 0;
 }
 
 .item-info {
@@ -112,6 +131,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  margin-top: 30px;
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   box-shadow: 0px 20px 20px rgba(103, 189, 153, 0.2);
@@ -121,6 +141,15 @@ button:hover {
 }
 button h6 {
   font-size: 15px;
+}
+button.gray {
+  background: #bdbdbd;
+  box-shadow: 0px 20px 20px rgba(167, 167, 167, 0.2);
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
 }
 
 .nav-dots {
@@ -140,6 +169,18 @@ button h6 {
   background-color: #e0e0e0;
   border-radius: 50%;
 }
-.green {
+.nav-dot.green {
   background-color: #67bd99;
+}
+
+@media only screen and (min-width: 992px) {
+  body {
+    justify-content: space-around;
+  }
+  .container {
+    width: 80%;
+  }
+  .content-card {
+    display: block;
+  }
 }
